@@ -16,7 +16,7 @@ pipeline {
     }
     stage('Build') {
         steps {
-        git 'https://https://github.com/ramizshaikh8/ci-cd-demo.git'
+        git 'https://github.com/ramizshaikh8/ci-cd-demo.git'
         sh 'go build .'
         }
     }
