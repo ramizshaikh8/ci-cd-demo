@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = 'my-go' // ✅ Fixed: lowercase
-        CONTAINER_NAME = 'my-go-app-container'
+        IMAGE_NAME = 'MY-Go' // ✅ Fixed: lowercase
+        CONTAINER_NAME = 'My-go-app-container'
         HOST_PORT = '5059'
         CONTAINER_PORT = '5000'
     }
