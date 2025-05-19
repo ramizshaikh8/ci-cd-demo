@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = 'MY-Go' // ✅ Fixed: lowercase
-        CONTAINER_NAME = 'My-go-app-container'
+        IMAGE_NAME = 'my-go'
+        CONTAINER_NAME = 'my-go-app-container'
         HOST_PORT = '5059'
         CONTAINER_PORT = '5000'
     }
@@ -11,14 +11,12 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                git 'https://github.com/ramizshaikh8/ci-cd-demo.git'
                 sh 'go test ./...'
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                git 'https://github.com/ramizshaikh8/ci-cd-demo.git'
                 sh 'docker build -t $IMAGE_NAME .'
             }
         }
@@ -40,7 +38,6 @@ pipeline {
                 sh '''
                     echo "[INFO] Verifying container is running..."
                     docker ps | grep $CONTAINER_NAME || echo "Container failed to start"
-                    cd /var/lib/jenkins/workspace/full-cicd-go && ./go-webapp-sample &
                 '''
             }
         }
